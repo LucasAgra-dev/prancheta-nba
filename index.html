@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prancheta NBA — Estatísticas, times e jogadores</title>
+  <meta name="description" content="Prancheta NBA: elencos, classificação, jogos e estatísticas dos 30 times. Projeto acadêmico.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23B87333'/%3E%3Cpath d='M1 16h30M16 1v30M6 5c7 6 7 16 0 22M26 5c-7 6-7 16 0 22' stroke='%23000' stroke-width='1.5' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- Hero (tela 1 do protótipo): visível apenas na página inicial -->
+  <header class="hero" id="hero">
+    <h1 class="hero__titulo"><span class="hero__vermelho">PRANCHETA</span> NBA</h1>
+    <p class="hero__sub">NATIONAL BASKETBALL ASSOCIATION</p>
+    <ul class="hero__apoio">
+      <li>PONTUAÇÕES, RANKINGS E RECORDES DA MAIOR LIGA DE BASQUETE DO MUNDO.</li>
+      <li>ACOMPANHE A TEMPORADA EM UMA PLATAFORMA RÁPIDA, INTUITIVA E DIRETO AO PONTO.</li>
+    </ul>
+    <figure class="hero__figura"><img id="hero-img" alt="Mãos erguendo uma bola de basquete sobre fundo escuro de quadra"></figure>
+  </header>
+
+  <nav class="navbar" aria-label="Navegação principal">
+    <a class="navbar__marca" href="#inicio" data-rota="inicio" aria-label="Prancheta NBA — página inicial">
+      <img id="marca-img" alt="Logotipo Prancheta NBA" width="40" height="40">
+    </a>
+    <button class="navbar__hamburguer" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <span aria-hidden="true">☰</span> MENU
+    </button>
+    <ul class="navbar__menu" id="menu">
+      <li><a href="#jogos" data-rota="jogos">JOGOS</a></li>
+      <li><a href="#classificacao" data-rota="classificacao">CLASSIFICAÇÃO</a></li>
+      <li><a href="#estatisticas" data-rota="estatisticas">ESTATÍSTICAS</a></li>
+      <li><a href="#jogadores" data-rota="jogadores">JOGADORES</a></li>
+      <li><a href="#times" data-rota="times">TIMES</a></li>
+      <li><a href="#rankings" data-rota="rankings">RANKINGS</a></li>
+      <li><a href="#contato" data-rota="contato">CONTATO</a></li>
+      <li class="navbar__direita"><a href="#login" data-rota="login" id="link-login">LOGIN</a></li>
+      <li><a class="botao-cta" href="#criar-conta" data-rota="criar-conta">CRIAR CONTA</a></li>
+      <li><button type="button" class="navbar__icone" id="btn-tema" aria-pressed="false">🌙 <span>TEMA ESCURO</span></button></li>
+      <li><button type="button" class="navbar__icone" id="btn-a11y" aria-expanded="false" aria-controls="painel-a11y">♿ <span>ACESSIBILIDADE</span></button></li>
+    </ul>
+  </nav>
+
+  <aside class="painel-a11y" id="painel-a11y" aria-labelledby="titulo-a11y" hidden>
+    <div class="painel-a11y__topo">
+      <h2 id="titulo-a11y">Acessibilidade</h2>
+      <button type="button" class="botao-secundario" id="btn-fechar-a11y" aria-label="Fechar painel de acessibilidade">✕</button>
+    </div>
+    <div role="group" aria-label="Tema de cores" class="painel-a11y__grupo">
+      <button type="button" data-a11y="claro" aria-pressed="true">Modo claro</button>
+      <button type="button" data-a11y="escuro" aria-pressed="false">Modo escuro</button>
+    </div>
+    <div role="group" aria-label="Tamanho da fonte" class="painel-a11y__grupo">
+      <button type="button" data-a11y="fonte-menor" aria-label="Diminuir fonte">A-</button>
+      <button type="button" data-a11y="fonte-padrao" aria-label="Fonte padrão">A</button>
+      <button type="button" data-a11y="fonte-maior" aria-label="Aumentar fonte">A+</button>
+      <span id="valor-fonte" aria-live="polite">100%</span>
+    </div>
+    <div class="painel-a11y__grupo">
+      <button type="button" data-a11y="contraste" aria-pressed="false">Alto contraste (AAA)</button>
+      <button type="button" data-a11y="animacoes" aria-pressed="false">Reduzir animações</button>
+      <button type="button" data-a11y="resetar">Resetar acessibilidade</button>
+    </div>
+    <p class="nota">Suas preferências ficam salvas neste navegador. Tecla Esc fecha o painel.</p>
+  </aside>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ============ TELA 1: INÍCIO ============ -->
+    <section class="view" id="view-inicio" aria-label="Página inicial">
+      <section class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Destaques da rodada">
+        <div class="carrossel__janela">
+          <div class="carrossel__trilho" id="trilho"></div>
+        </div>
+        <div class="carrossel__controles">
+          <button type="button" id="car-anterior" aria-label="Slide anterior">‹ Anterior</button>
+          <div class="carrossel__bolinhas" id="car-bolinhas" role="group" aria-label="Escolher slide"></div>
+          <button type="button" id="car-proximo" aria-label="Próximo slide">Próximo ›</button>
+          <button type="button" id="car-pausa">❚❚ Pausar</button>
+        </div>
+        <p class="sr-only" id="car-status" aria-live="polite"></p>
+      </section>
+
+      <section class="boas-vindas" aria-labelledby="titulo-bv">
+        <h2 id="titulo-bv">BEM-VINDO AO PRANCHETA NBA</h2>
+        <article class="zigue">
+          <p>O Prancheta NBA nasceu para conectar os apaixonados por basquete à essência tática do jogo: os detalhes que definem as vitórias e constroem legados. Mais do que um simples portal de números, somos a sua principal ferramenta para desenhar e decifrar a NBA.</p>
+          <img data-img="bem-vindo-1" alt="Ilustração de um jogador driblando em direção à cesta">
+        </article>
+        <article class="zigue zigue--inverso">
+          <p>Nossa plataforma reúne estatísticas avançadas, resultados em tempo real, perfis completos de jogadores e elencos detalhados em uma interface rápida, limpa e intuitiva. Seja você um estrategista dominando o seu fantasy game, um analista que gosta de embasar debates ou um fã que não perde nenhuma rodada, nosso objetivo é transformar a complexidade dos dados em análises claras, com a mesma precisão de um treinador.</p>
+          <img data-img="bem-vindo-2" alt="Ilustração de uma prancheta tática com jogadas desenhadas">
+        </article>
+        <article class="zigue">
+          <p>Explore as estatísticas, compare os astros, acompanhe as classificações e eleve a sua experiência vivendo a maior liga de basquete do mundo. Entre em quadra com a gente e tenha a NBA na ponta da sua prancheta.</p>
+          <img data-img="bem-vindo-3" alt="Ilustração de um jogador comemorando com os braços abertos">
+        </article>
+      </section>
+
+      <section class="container" aria-labelledby="titulo-glossario">
+        <h2 id="titulo-glossario">Entenda os números</h2>
+        <div class="grade grade--glossario">
+          <article class="card"><h3>PPG</h3><p class="card__sub">Pontos por Jogo</p><p>Total de pontos dividido pelas partidas disputadas. É a principal medida de poder ofensivo.</p></article>
+          <article class="card"><h3>RPG</h3><p class="card__sub">Rebotes por Jogo</p><p>Bolas recuperadas após um arremesso errado, no ataque ou na defesa.</p></article>
+          <article class="card"><h3>APG</h3><p class="card__sub">Assistências por Jogo</p><p>Passes que levam diretamente à cesta de um companheiro. Mede a criação de jogadas.</p></article>
+          <article class="card"><h3>FG%</h3><p class="card__sub">Aproveitamento de Arremessos</p><p>Percentual de arremessos de quadra convertidos (lances livres não entram).</p></article>
+          <article class="card"><h3>PER</h3><p class="card__sub">Eficiência do Jogador</p><p>Índice que resume a produção por minuto. A média da liga é 15.</p></article>
+          <article class="card"><h3>Play-In / Playoffs</h3><p class="card__sub">Fase decisiva</p><p>Do 1º ao 6º de cada conferência vai direto aos Playoffs. Do 7º ao 10º disputa o Play-In pelas duas últimas vagas.</p></article>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ JOGOS ============ -->
+    <section class="view container" id="view-jogos" aria-labelledby="titulo-jogos" hidden>
+      <h1 id="titulo-jogos">Jogos</h1>
+      <p class="nota">Placares simulados para demonstração (data de referência: 25/11/2026). Horários em ET.</p>
+      <form class="filtros" id="filtros-jogos">
+        <label>Data <select id="jogos-data"></select></label>
+        <label>Status
+          <select id="jogos-status">
+            <option value="">Todos</option><option>AO VIVO</option><option>FINAL</option><option>EM BREVE</option>
+          </select>
+        </label>
+      </form>
+      <p class="contador" id="jogos-contador" aria-live="polite"></p>
+      <div class="grade grade--jogos" id="lista-jogos"></div>
+    </section>
+
+    <!-- ============ TELA 2: CLASSIFICAÇÃO ============ -->
+    <section class="view container" id="view-classificacao" aria-labelledby="titulo-class" hidden>
+      <h1 id="titulo-class">Classificação</h1>
+      <div class="abas" role="tablist" aria-label="Conferências">
+        <button type="button" role="tab" id="tab-leste" aria-controls="painel-leste" aria-selected="true">Eastern Conference <small>(Leste)</small></button>
+        <button type="button" role="tab" id="tab-oeste" aria-controls="painel-oeste" aria-selected="false" tabindex="-1">Western Conference <small>(Oeste)</small></button>
+      </div>
+      <ul class="legenda" aria-label="Legenda das zonas">
+        <li><span class="selo selo--po" aria-hidden="true">P</span> Playoffs (#1–#6), linha tracejada ao final</li>
+        <li><span class="selo selo--pi" aria-hidden="true">PI</span> Play-In (#7–#10), linha cheia ao final</li>
+      </ul>
+      <div role="tabpanel" id="painel-leste" aria-labelledby="tab-leste" tabindex="0"></div>
+      <div role="tabpanel" id="painel-oeste" aria-labelledby="tab-oeste" tabindex="0" hidden></div>
+    </section>
+
+    <!-- ============ ABAS DE PESQUISA ============ -->
+    <section class="view container" id="view-pesquisa" aria-labelledby="titulo-pesquisa" hidden>
+      <h1 id="titulo-pesquisa">Pesquisa</h1>
+      <div class="abas" role="tablist" aria-label="Tipo de pesquisa">
+        <button type="button" role="tab" id="tab-jogadores" data-pesquisa="jogadores" aria-controls="painel-pesquisa">Jogadores</button>
+        <button type="button" role="tab" id="tab-times" data-pesquisa="times" aria-controls="painel-pesquisa">Times</button>
+        <button type="button" role="tab" id="tab-estatisticas" data-pesquisa="estatisticas" aria-controls="painel-pesquisa">Estatísticas</button>
+        <button type="button" role="tab" id="tab-rankings" data-pesquisa="rankings" aria-controls="painel-pesquisa">Rankings</button>
+      </div>
+      <form class="filtros" id="filtros" role="search">
+        <label>Buscar por nome <input type="search" id="f-nome" placeholder="Ex.: Doncic" autocomplete="off"></label>
+        <label>Conferência
+          <select id="f-conf"><option value="">Todas</option><option value="Leste">Leste</option><option value="Oeste">Oeste</option></select>
+        </label>
+        <label>Divisão <select id="f-div"><option value="">Todas</option></select></label>
+        <label>Time <select id="f-time"><option value="">Todos os 30</option></select></label>
+        <label data-so-jogador>Posição
+          <select id="f-pos"><option value="">Todas</option><option>PG</option><option>SG</option><option>SF</option><option>PF</option><option>C</option></select>
+        </label>
+        <label data-so-jogador>Ordenar por
+          <select id="f-ordem"><option value="ppg">PPG (pontos)</option><option value="rpg">RPG (rebotes)</option><option value="apg">APG (assistências)</option></select>
+        </label>
+        <button type="reset" class="botao-secundario">Limpar filtros</button>
+      </form>
+      <p class="contador" id="contador" aria-live="polite"></p>
+      <div role="tabpanel" id="painel-pesquisa" tabindex="0"></div>
+    </section>
+
+    <!-- ============ TELA 3: TIME ============ -->
+    <section class="view" id="view-time" aria-label="Página do time" hidden></section>
+
+    <!-- ============ TELA 4: JOGADOR ============ -->
+    <section class="view" id="view-jogador" aria-label="Perfil do jogador" hidden></section>
+
+    <!-- ============ TELA 5: LOGIN / CRIAR CONTA ============ -->
+    <section class="view container acesso" id="view-login" aria-labelledby="titulo-login" hidden>
+      <h1 id="titulo-login" class="acesso__titulo">LOGIN</h1>
+      <p class="nota centro">Demonstração acadêmica: nada é enviado a um servidor e a senha não é salva. Não use uma senha real.</p>
+
+      <form class="formulario" id="form-login" novalidate>
+        <div class="campo">
+          <label for="login-email">EMAIL</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required aria-describedby="erro-login-email">
+          <p class="erro" id="erro-login-email"></p>
+        </div>
+        <div class="campo">
+          <label for="login-senha">SENHA</label>
+          <div class="campo__senha">
+            <input id="login-senha" name="senha" type="password" autocomplete="current-password" required aria-describedby="erro-login-senha">
+            <button type="button" class="botao-secundario" data-ver="login-senha" aria-pressed="false" aria-label="Mostrar senha">Mostrar</button>
+          </div>
+          <p class="erro" id="erro-login-senha"></p>
+        </div>
+        <button class="botao-cta botao-cta--grande" type="submit">ENTRAR</button>
+        <button type="button" class="botao-link" id="btn-esqueci">Esqueci a senha</button>
+        <a href="#criar-conta">Não tem conta? Criar conta</a>
+        <p class="status" id="status-login" role="status"></p>
+      </form>
+
+      <form class="formulario" id="form-cadastro" novalidate hidden>
+        <div class="campo">
+          <label for="cad-nome">NOME</label>
+          <input id="cad-nome" name="nome" autocomplete="name" required aria-describedby="erro-cad-nome">
+          <p class="erro" id="erro-cad-nome"></p>
+        </div>
+        <div class="campo">
+          <label for="cad-email">EMAIL</label>
+          <input id="cad-email" name="email" type="email" autocomplete="email" required aria-describedby="erro-cad-email">
+          <p class="erro" id="erro-cad-email"></p>
+        </div>
+        <div class="campo">
+          <label for="cad-time">TIME FAVORITO</label>
+          <select id="cad-time" name="time" required aria-describedby="erro-cad-time"><option value="">Selecione um time</option></select>
+          <p class="erro" id="erro-cad-time"></p>
+        </div>
+        <div class="campo">
+          <label for="cad-senha">SENHA</label>
+          <div class="campo__senha">
+            <input id="cad-senha" name="senha" type="password" autocomplete="new-password" required aria-describedby="ajuda-senha erro-cad-senha">
+            <button type="button" class="botao-secundario" data-ver="cad-senha" aria-pressed="false" aria-label="Mostrar senha">Mostrar</button>
+          </div>
+          <p class="nota" id="ajuda-senha">Mínimo de 8 caracteres, com letras e números.</p>
+          <p class="erro" id="erro-cad-senha"></p>
+        </div>
+        <div class="campo">
+          <label for="cad-confirma">CONFIRMAR SENHA</label>
+          <input id="cad-confirma" name="confirma" type="password" autocomplete="new-password" required aria-describedby="erro-cad-confirma">
+          <p class="erro" id="erro-cad-confirma"></p>
+        </div>
+        <button class="botao-cta botao-cta--grande" type="submit">CRIAR CONTA</button>
+        <a href="#login">Já tem conta? Fazer login</a>
+        <p class="status" id="status-cadastro" role="status"></p>
+      </form>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="view container" id="view-contato" aria-labelledby="titulo-contato" hidden>
+      <h1 id="titulo-contato">Contato</h1>
+      <p class="centro">Todos os campos são obrigatórios.</p>
+      <form class="formulario formulario--largo" id="form-contato" novalidate>
+        <div class="campo">
+          <label for="c-nome">Nome</label>
+          <input id="c-nome" name="nome" autocomplete="name" required aria-describedby="erro-c-nome">
+          <p class="erro" id="erro-c-nome"></p>
+        </div>
+        <div class="campo">
+          <label for="c-email">E-mail</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" required aria-describedby="erro-c-email">
+          <p class="erro" id="erro-c-email"></p>
+        </div>
+        <div class="campo">
+          <label for="c-assunto">Assunto</label>
+          <select id="c-assunto" name="assunto" required aria-describedby="erro-c-assunto">
+            <option value="">Selecione</option><option>Sugestão</option><option>Bug</option><option>Parceria</option><option>Dúvida</option>
+          </select>
+          <p class="erro" id="erro-c-assunto"></p>
+        </div>
+        <div class="campo">
+          <label for="c-msg">Mensagem</label>
+          <textarea id="c-msg" name="mensagem" rows="5" maxlength="600" required aria-describedby="conta-msg erro-c-msg"></textarea>
+          <p class="nota" id="conta-msg">0/600 caracteres (mínimo 10)</p>
+          <p class="erro" id="erro-c-msg"></p>
+        </div>
+        <button class="botao-cta botao-cta--grande" type="submit">ENVIAR MENSAGEM</button>
+        <p class="status" id="status-contato" role="status"></p>
+      </form>
+    </section>
+
+    <!-- ============ PRIVACIDADE ============ -->
+    <section class="view container texto" id="view-privacidade" aria-labelledby="titulo-priv" hidden>
+      <h1 id="titulo-priv">Política de privacidade</h1>
+      <p>O Prancheta NBA é um projeto acadêmico sem servidor próprio. Os formulários de login, cadastro e contato são simulações: nenhuma informação é transmitida.</p>
+      <p>Este navegador guarda apenas, via <code>localStorage</code>, suas preferências de acessibilidade e, caso você use as telas de acesso, o nome e o time favorito informados. Senhas nunca são armazenadas.</p>
+      <p>As fontes tipográficas são carregadas do Google Fonts quando há conexão com a internet.</p>
+      <button type="button" class="botao-secundario" id="btn-apagar">Apagar meus dados deste navegador</button>
+      <p class="status" id="status-priv" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape__grade">
+      <nav aria-label="Mapa do site">
+        <h2>Mapa do site</h2>
+        <ul class="rodape__mapa">
+          <li><a href="#inicio">Início</a></li><li><a href="#jogos">Jogos</a></li><li><a href="#classificacao">Classificação</a></li>
+          <li><a href="#estatisticas">Estatísticas</a></li><li><a href="#jogadores">Jogadores</a></li><li><a href="#times">Times</a></li>
+          <li><a href="#rankings">Rankings</a></li><li><a href="#contato">Contato</a></li><li><a href="#login">Login</a></li>
+          <li><a href="#criar-conta">Criar conta</a></li><li><a href="#privacidade">Política de privacidade</a></li>
+        </ul>
+      </nav>
+      <section aria-labelledby="rod-proj">
+        <h2 id="rod-proj">O projeto</h2>
+        <p>Prancheta NBA — Desenvolvimento de Interfaces 2026</p>
+        <p>Aluno: Lucas Agra de Oliveira Moraes<br>Professor: Prof. Dr. Felipe Batista da Silva</p>
+        <p>Site sem vínculo oficial com a NBA. Dados estatísticos ilustrativos.</p>
+      </section>
+      <section aria-labelledby="rod-a11y">
+        <h2 id="rod-a11y">Acessibilidade</h2>
+        <p>Desenvolvido seguindo as diretrizes WCAG 2.1 nível AA: navegação por teclado, contraste adequado, modo escuro, alto contraste e ajuste de fonte.</p>
+        <h2>Redes sociais</h2>
+        <ul class="redes">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram (abre em nova aba)">IG</a></li>
+          <li><a href="https://x.com/" target="_blank" rel="noopener" aria-label="X, antigo Twitter (abre em nova aba)">X</a></li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube (abre em nova aba)">YT</a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub (abre em nova aba)">GH</a></li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <noscript><p class="centro">Este site precisa de JavaScript para exibir os times e jogadores.</p></noscript>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
