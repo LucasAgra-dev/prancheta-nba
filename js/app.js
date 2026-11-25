@@ -109,24 +109,17 @@
     `<g stroke="#1D428A" stroke-width="30" fill="none"><path d="M300 235l-25 95M342 235l35 90"/></g>` + extra);
 
   const ARTES = {
-    hero: quadra(
-      `<g stroke="#7A4A2B" stroke-width="38" stroke-linecap="round" fill="none"><path d="M200 380 262 215l18-45"/></g>` +
-      `<g stroke="#A9714B" stroke-width="38" stroke-linecap="round" fill="none"><path d="M470 380 392 220l-14-55"/></g>` + bola(325, 135, 92)),
-    'bem-vindo-1': figura('M285 145 215 195 190 250M355 145l55 50 55-30', bola(185, 285, 30)),
-    'bem-vindo-2': quadra(
-      `<g stroke="#FFFFFF" stroke-width="6" fill="none"><circle cx="190" cy="110" r="20"/><circle cx="190" cy="250" r="20"/><circle cx="300" cy="180" r="20"/>` +
-      `<path d="M215 110C330 70 420 100 470 165M215 250c90 40 170 20 220-40" stroke-dasharray="14 10"/></g>` +
-      `<g stroke="#FFCC00" stroke-width="8"><path d="M390 80l36 36m0-36-36 36M420 250l36 36m0-36-36 36M500 170l36 36m0-36-36 36"/></g>`),
-    'bem-vindo-3': figura('M285 145 210 130 160 80M355 145l75-15 50-50', ''),
-    'destaque-1': quadra(bola(320, 180, 105)),
-    'destaque-2': quadra(`<g fill="#FFCC00"><rect x="190" y="180" width="70" height="120"/><rect x="285" y="90" width="70" height="210"/><rect x="380" y="140" width="70" height="160"/></g>`),
-    'destaque-3': quadra(bola(200, 180, 75) + bola(440, 180, 75) + `<text x="320" y="200" font-family="Impact,sans-serif" font-size="60" fill="#FFF" text-anchor="middle">VS</text>`),
-    'destaque-4': quadra(
-      `<g stroke="#FFF" stroke-width="7" fill="none"><circle cx="170" cy="230" r="22"/><circle cx="320" cy="90" r="22"/><circle cx="480" cy="240" r="22"/><path d="M185 210 300 105M345 100l125 115M195 235c90 30 170 30 255 5" stroke-dasharray="16 10"/></g>` + bola(320, 215, 30))
+    hero: 'assets/images/hero.png',
+    'bem-vindo-1': 'assets/images/bem-vindo-1.png',
+    'bem-vindo-2': 'assets/images/bem-vindo-2.png',
+    'bem-vindo-3': 'assets/images/bem-vindo-3.png',
+    'destaque-1': 'assets/images/mia-spurs.png',
+    'destaque-2': 'assets/images/lk.png',
+    'destaque-3':'assets/images/lakers-spu.png',
+    'destaque-4': 'assets/images/astros.png',
   };
 
-  const marcaSVG = svg('0 0 40 40',
-    `<rect x="6" y="5" width="28" height="33" rx="4" fill="#FFF"/><rect x="14" y="2" width="12" height="7" rx="2" fill="#B87333"/>` + bola(20, 24, 9));
+  const marcaSVG = 'assets/images/logo.png';
 
   /**
    * Retorna os atributos src/onerror de uma imagem.
