@@ -12,21 +12,6 @@ Aluno: Lucas Agra de Oliveira Moraes · Professor: Prof. Dr. Felipe Batista da S
 Não há instalação nem build: abra `index.html` no navegador.
 A internet só é usada para as fontes (Google Fonts); sem ela, o site usa fontes do sistema.
 
-## Como publicar no GitHub Pages
-
-1. Crie um repositório no GitHub (por exemplo, `prancheta-nba`).
-2. Envie **o conteúdo** desta pasta, de modo que `index.html` fique na raiz:
-   ```bash
-   git init
-   git add .
-   git commit -m "Prancheta NBA"
-   git branch -M main
-   git remote add origin https://github.com/SEU-USUARIO/prancheta-nba.git
-   git push -u origin main
-   ```
-   Alternativa sem terminal: **Add file → Upload files** e arraste os arquivos e pastas.
-3. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`.
-4. Após alguns minutos o site fica em `https://SEU-USUARIO.github.io/prancheta-nba/`.
 
 ## Estrutura
 
