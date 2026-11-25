@@ -70,19 +70,6 @@ Azul `#003366` / `#002244` · Vermelho `#C9082A` · Branco · Cinzas `#F4F4F4` `
 
 O documento do projeto cita `#6B8E23` como cinza; esse código é verde-oliva e não foi usado. **Corrija também no texto do trabalho.**
 
-## Imagens próprias
-
-Por padrão o site desenha SVGs (escudos, silhuetas e ilustrações), sem requisições que falhem.
-Para usar arquivos seus:
-
-1. Coloque os arquivos com estes nomes:
-   - `assets/logos/lal.png`, `bos.png`, … (sigla em minúsculas) e `prancheta.png` (marca da navbar)
-   - `assets/images/hero.jpg`, `bem-vindo-1.jpg` a `bem-vindo-3.jpg`, `destaque-1.jpg` a `destaque-4.jpg`
-   - `assets/images/jogadores/lal-luka-doncic.png` (sigla + nome sem acentos, com hífens)
-2. Em `js/data.js`, mude `usarImagensLocais` para `true`.
-
-O que faltar volta automaticamente para o SVG (o navegador registrará um aviso de arquivo não encontrado no console).
-Use apenas imagens que você tenha direito de publicar; logos e fotos oficiais são protegidos.
 
 ## Dados
 
